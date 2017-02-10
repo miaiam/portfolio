@@ -5,7 +5,7 @@
 
 html, body{
 	height: 100%;
-font-family: 'Playfair Display', serif;
+	font-family: 'Playfair Display', serif;
 }
 
 section{
@@ -16,7 +16,7 @@ section{
 }
 
 section > *{
-	padding:40px;
+	padding: 40px;
 	box-sizing: border-box;
 }
 
@@ -40,7 +40,7 @@ section > *{
 	font-family: 'Merriweather Sans', sans-serif;
 	color: #F8F8F8;
 	text-transform: uppercase;
-	font-size: 130px;
+	font-size: 7em;
 	word-break: break-all;
 	float: right; 
 }
@@ -52,10 +52,18 @@ section > *{
 	height: 100%;
 }
 
-.text-left p{
+.text-left .text{
 	width: 80%;
 	margin: 0 auto;
 	color: #fff;
+}
+
+h3{
+	font-family: 'Merriweather Sans', sans-serif;
+	text-transform: uppercase;
+	color: #000;
+	font-size: 1.5em;
+	margin-bottom: 10px;
 }
 
 #intro img{
@@ -66,11 +74,27 @@ section > *{
 }
 
 #projects{
-	background: blue;
 	margin-top: 200vh; 
 	position: relative;
+	overflow-y: hidden;
 }
 
+.wrapper{
+	z-index: 20;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: #F8F8F8;
+}
+
+.contact{
+	background: #0a9860;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	z-index: 0;
+}
 
 #borders > *{
 	position: fixed;

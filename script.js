@@ -1,7 +1,6 @@
 $(document).ready(function () {
 	var scrollAmount;
 	$(window).scroll(function(){
-
 		scrollAmount = $(window).scrollTop();
 		if(scrollAmount > 10 && !$('.section-left').hasClass('full-width')){
 			$('.section-left').animate({
@@ -28,5 +27,23 @@ $(document).ready(function () {
 			$('#intro').css('top', '0');
 		}
 
+	});
+
+	$('html').on ('DOMMouseScroll', function (e) {
+		var delta = e.originalEvent.detail;
+		if(scrollAmount + $(window).height() == $(document).height()){
+			if(delta > 0 && $('.wrapper').hasClass('full-width')){
+				$('.wrapper').animate({
+					right: "-50%" }, 800, function(){
+				});
+				$('.wrapper').removeClass('full-width');
+			} else if(delta < 0 && !$('.wrapper').hasClass('full-width')){
+				$('.wrapper').animate({
+					right: "0%" }, 800, function(){
+						$('.wrapper').addClass('full-width');
+				});
+				e.preventDefault();
+			}
+		}
 	});
 });
