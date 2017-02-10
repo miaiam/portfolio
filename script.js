@@ -46,4 +46,24 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+	$('html').on ('mousewheel', function (e) {
+		var delta = e.originalEvent.wheelDelta;
+		if(scrollAmount + $(window).height() == $(document).height()){
+			if(delta > 0 && $('.wrapper').hasClass('full-width')){
+				$('.wrapper').animate({
+					right: "-50%" }, 800, function(){
+				});
+				$('.wrapper').removeClass('full-width');
+			} else if(delta < 0 && !$('.wrapper').hasClass('full-width')){
+				$('.wrapper').animate({
+					right: "0%" }, 800, function(){
+						$('.wrapper').addClass('full-width');
+				});
+				e.preventDefault();
+			}
+		}
+	});
+
+
 });
