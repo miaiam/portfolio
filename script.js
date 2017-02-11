@@ -31,6 +31,7 @@ $(document).ready(function () {
 
 	$('html').on ('DOMMouseScroll', function (e) {
 		var delta = e.originalEvent.detail;
+
 		if(scrollAmount + $(window).height() == $(document).height()){
 			if(delta > 0 && $('.wrapper').hasClass('full-width')){
 				$('.wrapper').animate({
@@ -47,20 +48,30 @@ $(document).ready(function () {
 		}
 	});
 
+	var animating = "false";
+
 	$('html').on ('mousewheel', function (e) {
+
 		var delta = e.originalEvent.wheelDelta;
+
 		if(scrollAmount + $(window).height() == $(document).height()){
-			if(delta < 0 && $('.wrapper').hasClass('full-width')){
+			if(delta < 0 && $('.wrapper').hasClass('full-width') && animating == "false"){
+				animating = "true";
 				$('.wrapper').animate({
 					right: "-50%" }, 800, function(){
+						$('.wrapper').removeClass('full-width');
+						animating = "false";
 				});
-				$('.wrapper').removeClass('full-width');
 			} else if(delta > 0 && !$('.wrapper').hasClass('full-width')){
-				$('.wrapper').animate({
-					right: "0%" }, 800, function(){
-						$('.wrapper').addClass('full-width');
-				});
 				e.preventDefault();
+				if(animating == "false"){
+					animating = "true";
+					$('.wrapper').animate({
+						right: "0%" }, 800, function(){
+							$('.wrapper').addClass('full-width');
+							animating = "false";
+					});
+				}
 			}
 		}
 	});
