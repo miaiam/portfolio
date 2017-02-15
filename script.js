@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	var scrollAmount;
 	var divName;
+	var animating = "false";
 	$(window).scroll(function(){
 		scrollAmount = $(window).scrollTop();
 		if(scrollAmount > 10 && !$('.section-left').hasClass('full-width')){
@@ -36,13 +37,13 @@ $(document).ready(function () {
 		var delta = e.originalEvent.detail;
 
 		if(scrollAmount + $(window).height() == $(document).height()){
-			if(delta > 0 && $('.wrapper').hasClass('full-width')  && animating == "false"){
-				animating = "true";
+			if(delta > 0 && $('.wrapper').hasClass('full-width') && animating == "false"){
+				animating = "true"; 
 				$('.wrapper').animate({
 					right: "-50%" }, 800, function(){
-					animating = "false";
+						$('.wrapper').removeClass('full-width');
+						animating = "false";
 				});
-				$('.wrapper').removeClass('full-width');
 			} else if(delta < 0 && !$('.wrapper').hasClass('full-width')){
 				e.preventDefault();
 				if(animating == "false"){
